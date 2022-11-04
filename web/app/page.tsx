@@ -91,7 +91,7 @@ export default function HomePage() {
             placeholder="Qual o nome do seu bolão?" 
           />
           <button 
-            className="bg-yellow-500 px-6 py-4 rounded font-bold uppercase text-gray-900 hover:bg-yellow-700 transition-all"
+            className="bg-yellow-500 px-6 py-4 rounded font-bold uppercase text-sm text-gray-900 hover:bg-yellow-700 transition-all"
             type="submit"
           >
             Criar meu bolão
