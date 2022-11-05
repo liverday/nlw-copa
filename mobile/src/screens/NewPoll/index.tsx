@@ -6,7 +6,7 @@ import Input from '../../components/Input';
 import Logo from '../..assets/logo.svg';
 import Button from '../../components/Button';
 
-const NewPool: React.FC = () => {
+const NewPoll: React.FC = () => {
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Criar novo bolão" />
@@ -38,4 +38,4 @@ const NewPool: React.FC = () => {
   )
 }
 
-export default NewPool;
+export default NewPoll;

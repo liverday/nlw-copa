@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 
 import Button from '../../components/Button';
 
-const ListPools: React.FC = () => {
+const ListPolls: React.FC = () => {
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Meus bolões" />
@@ -18,4 +18,4 @@ const ListPools: React.FC = () => {
   )
 }
 
-export default ListPools;
+export default ListPolls;

@@ -1,6 +1,6 @@
 import { Row, Text, Pressable } from 'native-base';
 
-const EmptyPoolList: React.FC = () => {
+const EmptyPollList: React.FC = () => {
   return (
     <Row flexWrap="wrap" justifyContent="center">
       <Text color="white" fontSize="sm" textAlign="center">

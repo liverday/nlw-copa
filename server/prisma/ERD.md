@@ -19,6 +19,7 @@ erDiagram
     String id PK 
     String name  
     String email  
+    String googleId  "nullable"
     String avatarUrl  "nullable"
     DateTime createdAt  
     }

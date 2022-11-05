@@ -4,7 +4,7 @@ interface Props {
   code: string;
 }
 
-const EmptyMyPoolList: React.FC<Props> = ({ code }) => {
+const EmptyMyPollList: React.FC<Props> = ({ code }) => {
   return (
     <Row flexWrap="wrap" justifyContent="center" p={4}>
       <Text color="gray.200" fontSize="sm">

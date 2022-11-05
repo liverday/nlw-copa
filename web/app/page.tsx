@@ -10,7 +10,7 @@ import api, { fetcher } from "../lib/axios";
 import Loading from "../components/Loading";
 
 type Data = {
-  pools: number,
+  polls: number,
   users: number,
   guesses: number
   isLoading: boolean
@@ -18,26 +18,26 @@ type Data = {
 
 export function useData(): Data {
   const { data: dataUsers } = useSWR('/users/count', fetcher)
-  const { data: dataPools } = useSWR('/pools/count', fetcher)
+  const { data: dataPolls } = useSWR('/polls/count', fetcher)
   const { data: dataGuesses } = useSWR('/guesses/count', fetcher)
 
   return { 
-    isLoading: !dataPools || !dataUsers || !dataGuesses,
-    pools: dataPools?.count, 
+    isLoading: !dataPolls || !dataUsers || !dataGuesses,
+    polls: dataPolls?.count, 
     users: dataUsers?.count, 
     guesses: dataGuesses?.count,
   };
 }
 
 export default function HomePage() {
-  const { pools, guesses, users, isLoading } = useData()
+  const { polls, guesses, users, isLoading } = useData()
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const { data } = await api.post('/pools', { title: inputRef.current?.value })
+      const { data } = await api.post('/polls', { title: inputRef.current?.value })
       navigator.clipboard.writeText(data.code);
 
       alert('Bolão criado com sucesso, o código foi copiado para a área de transferência!')
@@ -113,7 +113,7 @@ export default function HomePage() {
             />
 
             <div className="flex text-gray-100 flex-col">
-              <span className="text-2xl font-bold">+{pools}</span>
+              <span className="text-2xl font-bold">+{polls}</span>
               <span>Bolões criados</span>
             </div>
           </div>

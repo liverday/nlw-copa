@@ -5,7 +5,7 @@ import Input from '../../components/Input';
 
 import Button from '../../components/Button';
 
-const FindPool: React.FC = () => {
+const FindPoll: React.FC = () => {
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Buscar por código" showBackButton />
@@ -31,4 +31,4 @@ const FindPool: React.FC = () => {
   )
 }
 
-export default FindPool;
+export default FindPoll;
