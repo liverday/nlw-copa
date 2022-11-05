@@ -4,6 +4,7 @@ import * as AuthSession from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 
 import { GOOGLE_CLIENT_ID } from '@env';
+import api from '../../services/api';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -44,8 +45,22 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({ 
     }
   }
 
-  const signInWithGoogle = useCallback(async (accessToken: string) => {
-    console.log(`TOKEN DE AUTHENTICACAO ${accessToken}`)
+  const signInWithGoogle = useCallback(async (access_token: string) => {
+    try {
+      setIsUserLoading(true)
+      const { data: { token } } = await api.post('/users', {
+        access_token
+      });
+
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      const { data: { user } } = await api.get('/auth/me');
+
+      setUser(user)
+    } catch (error) {
+    } finally {
+      setIsUserLoading(false);
+    }
   }, []);
 
   useEffect(() => {

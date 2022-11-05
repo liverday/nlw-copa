@@ -3,7 +3,7 @@ import { VStack, Text, Heading } from 'native-base';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 
-import Logo from '../..assets/logo.svg';
+import Logo from '../../assets/logo.svg';
 import Button from '../../components/Button';
 
 const NewPoll: React.FC = () => {

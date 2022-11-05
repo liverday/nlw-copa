@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks/useAuth';
 
 
 const SignIn: React.FC = () => {
-  const { signIn } = useAuth();
+  const { signIn, isUserLoading } = useAuth();
 
   return (
     <Center flex={1} bgColor="gray.900" p={7}>
@@ -19,6 +19,8 @@ const SignIn: React.FC = () => {
         mt={12}
         type="SECONDARY"
         onPress={signIn}
+        isLoading={isUserLoading}
+        _loading={{ _spinner: { color: 'white' } }}
       >
         Entrar com Google
       </Button>
