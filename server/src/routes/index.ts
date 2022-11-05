@@ -1,8 +1,8 @@
-import { FastifyInstance, FastifyServerOptions } from 'fastify';
+import { FastifyInstance } from 'fastify';
 import fs from 'fs';
 import path from 'path';
 
-async function mainRoutes(app: FastifyInstance, _: FastifyServerOptions, done: Function) {
+export default async function mainRoutes(app: FastifyInstance) {
   const promises = fs.readdirSync(__dirname)
     .filter(fileName => fileName !== 'index.ts')
     .map(async (fileName) => {
@@ -12,8 +12,4 @@ async function mainRoutes(app: FastifyInstance, _: FastifyServerOptions, done: F
     });
 
   await Promise.all(promises);
-
-  done();
 }
-
-export default mainRoutes;

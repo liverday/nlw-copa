@@ -1,11 +1,9 @@
-import { FastifyInstance, FastifyServerOptions } from "fastify";
+import { FastifyInstance } from "fastify";
 import GamesController from "../controllers/games.controller";
 
-const gamesRoutes = (app: FastifyInstance, opts: FastifyServerOptions, done: Function) => {
+const gamesRoutes = async (app: FastifyInstance) => {
   const gamesController = new GamesController();
   app.get('/count', gamesController.count);
-
-  done();
 }
 
 export default gamesRoutes;

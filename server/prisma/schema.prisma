@@ -7,6 +7,7 @@ generator client {
 
 generator erd {
   provider = "prisma-erd-generator"
+  output   = "./ERD.md"
 }
 
 datasource db {
@@ -14,7 +15,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Pool {
+model Poll {
   id        String   @id @default(cuid())
   title     String
   code      String   @unique
@@ -29,13 +30,13 @@ model Pool {
 model Participant {
   id     String @id @default(cuid())
   userId String
-  poolId String
+  pollId String
 
   guesses Guess[]
   user    User    @relation(fields: [userId], references: [id])
-  pool    Pool    @relation(fields: [poolId], references: [id])
+  poll    Poll    @relation(fields: [pollId], references: [id])
 
-  @@unique([userId, poolId])
+  @@unique([userId, pollId])
 }
 
 model User {
@@ -46,7 +47,7 @@ model User {
   createdAt DateTime @default(now())
 
   participatingAt Participant[]
-  ownPools        Pool[]
+  ownPolls        Poll[]
 }
 
 model Guess {

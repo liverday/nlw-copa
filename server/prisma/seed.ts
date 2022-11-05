@@ -11,9 +11,9 @@ const prisma = new PrismaClient();
     }
   })
 
-  const pool = await prisma.pool.create({
+  const poll = await prisma.poll.create({
     data: {
-      title: 'Example Pool',
+      title: 'Example Poll',
       code: 'BOL123',
       ownerId: user.id,
       participants: {
@@ -44,9 +44,9 @@ const prisma = new PrismaClient();
           secondTeamGoals: 1,
           participant: {
             connect: {
-              userId_poolId: {
+              userId_pollId: {
                 userId: user.id,
-                poolId: pool.id
+                pollId: poll.id
               }
             }
           }
