@@ -22,12 +22,14 @@ const EmptyMyPollList: React.FC<Props> = ({ code }) => {
       </Text>
 
       <Text color="gray.200" mr={1}>
-        Use o código
-      </Text>
-
-      <Text color="gray.200" fontSize="sm" textAlign="center" fontFamily="heading">
-        {code}
+        Use o código 
+        {' '}
+        <Text color="gray.200" fontSize="sm" textAlign="center" fontFamily="heading">
+          {code}
+        </Text>
       </Text>
     </Row>
   );
 }
+
+export default EmptyMyPollList;

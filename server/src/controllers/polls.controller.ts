@@ -49,7 +49,7 @@ export default class PollsController {
       code: z.string()
     })
 
-    const { code } = joinPollBody.parse(request);
+    const { code } = joinPollBody.parse(request.body);
 
     const userId = request.user.sub;
 
@@ -118,6 +118,7 @@ export default class PollsController {
             id: true,
             user: {
               select: {
+                name: true,
                 avatarUrl: true
               }
             }  
@@ -147,6 +148,31 @@ export default class PollsController {
     const poll = await prisma.poll.findUnique({
       where: {
         id
+      },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            name: true
+          }
+        },
+        participants: {
+          select: {
+            id: true,
+            user: {
+              select: {
+                name: true,
+                avatarUrl: true
+              }
+            } 
+          },
+          take: 4
+        },
+        _count: {
+          select: {
+            participants: true
+          }
+        }
       }
     })
 

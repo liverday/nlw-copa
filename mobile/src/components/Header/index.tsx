@@ -8,9 +8,10 @@ type HeaderProps = {
   title: string;
   showBackButton?: boolean;
   showShareButton?: boolean;
+  onShare?: () => Promise<void>;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, showBackButton = false, showShareButton = false}) => {
+const Header: React.FC<HeaderProps> = ({ title, showBackButton = false, showShareButton = false, onShare}) => {
   const { navigate } = useNavigation();
   const EmptyBoxSpace = () => (<Box w={6} h={6} />)
 
@@ -23,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ title, showBackButton = false, showShar
           {title}
         </Text>
 
-        {showShareButton ? <ButtonIcon icon={Export} /> : <EmptyBoxSpace />}
+        {showShareButton ? <ButtonIcon icon={Export} onPress={onShare} /> : <EmptyBoxSpace />}
       </HStack>
     </HStack>
   )

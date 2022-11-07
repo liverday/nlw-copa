@@ -47,7 +47,8 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({ 
 
   const signInWithGoogle = useCallback(async (access_token: string) => {
     try {
-      setIsUserLoading(true)
+      setIsUserLoading(true);
+      
       const { data: { token } } = await api.post('/users', {
         access_token
       });
